@@ -1,0 +1,17 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AutoMapper" Version="10.1.1" />
+    <PackageReference Include="MediatR" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CodingChallenge.SeniorDev.V1.Common\CodingChallenge.SeniorDev.V1.Common.csproj" />
+    <ProjectReference Include="..\CodingChallenge.SeniorDev.V1.DataAccess\CodingChallenge.SeniorDev.V1.DataAccess.csproj" />
+  </ItemGroup>
+
+</Project>
