@@ -1,4 +1,5 @@
 using CodingChallenge.SeniorDev.V1.API.AM;
+using CodingChallenge.SeniorDev.V1.Common.Middleware;
 using CodingChallenge.SeniorDev.V1.Business.Actions.Courses;
 using CodingChallenge.SeniorDev.V1.Common.Configuration;
 using CodingChallenge.SeniorDev.V1.DataAccess.EF;
@@ -45,6 +46,8 @@ namespace CodingChallenge.SeniorDev.V1.API
                     options.UseSqlServer(Configuration.GetConnectionString(ConnectionStringKeys.CodingChallengeDB)));
 
             services.Add(ServiceDescriptor.Singleton(typeof(IOptionsSnapshot<>), typeof(OptionsManager<>)));
+
+            services.AddTransient<HttpResponseMiddleware>();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
@@ -59,6 +62,7 @@ namespace CodingChallenge.SeniorDev.V1.API
             app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseMiddleware<HttpResponseMiddleware>();
 
             app.UseAuthorization();
 
